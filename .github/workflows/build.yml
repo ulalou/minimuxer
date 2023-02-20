@@ -1,0 +1,37 @@
+name: Build minimuxer
+
+on: [push]
+
+jobs:
+  build:
+    name: Build minimuxer
+    if: startsWith(github.event.head_commit.message, '[build]')
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install rust
+        uses: actions-rs/toolchain@v1
+        with:
+          target: aarch64-apple-ios
+          profile: minimal
+
+      - name: Build
+        run: cargo build --release --target aarch64-apple-ios
+
+      - name: Upload to release
+        uses: IsaacShelton/update-existing-release@v1.3.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release: "Build"
+          tag: "build"
+          files: |
+            target/aarch64-apple-ios/release/libminimuxer.a
+            minimuxer.h
+          body: |
+            Commit: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
