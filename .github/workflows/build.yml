@@ -19,8 +19,10 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-          target: aarch64-apple-ios aarch64-apple-ios-sim x86_64-apple-ios
           profile: minimal
+
+      - name: Install rust targets for iOS
+        run: rustup target add aarch64-apple-ios aarch64-apple-ios-sim x86_64-apple-ios
 
       - name: Cache rust
         uses: Swatinem/rust-cache@v2
