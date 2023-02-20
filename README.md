@@ -22,7 +22,7 @@ minimuxer logs in View Error Logs to see if it did so successfully).
 
 SideStore communicates with minimuxer through C bindings called by Swift. If you are unsure on how to pass arguments to functions this way, check the currently implemented functions for examples.
 
-As of February 19th, minimuxer is included in SideStore as a prebuilt static library, built by GitHub Actions. Previously, it was included in SideStore as an Xcode project using cargo-xcode, but this
+As of February 20th, minimuxer is included in SideStore as a prebuilt static library, built by GitHub Actions. Previously, it was included in SideStore as an Xcode project using cargo-xcode, but this
 made build times very long.
 
-To build minimuxer for iOS and include it in SideStore, use [build_and_copy_to_sidestore.sh](./build_and_copy_to_sidestore.sh). If you have SideStore cloned to a different location than `../SideStore`, just run it with a modified `SIDESTORE_REPO` variable.
+To build minimuxer for iOS and copy it to the SideStore repo, use the Makefile. Example: `make copy SIDESTORE_REPO="../SideStore"`

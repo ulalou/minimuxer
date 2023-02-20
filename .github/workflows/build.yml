@@ -19,7 +19,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-          target: aarch64-apple-ios
+          target: aarch64-apple-ios aarch64-apple-ios-sim x86_64-apple-ios
           profile: minimal
 
       - name: Cache rust
@@ -31,7 +31,7 @@ jobs:
           xcode-version: 14.2
 
       - name: Build
-        run: cargo build --release --target aarch64-apple-ios
+        run: make build
 
       - name: Upload to release
         uses: IsaacShelton/update-existing-release@v1.3.1
@@ -40,7 +40,8 @@ jobs:
           release: "Build"
           tag: "build"
           files: |
-            target/aarch64-apple-ios/release/libminimuxer.a
+            target/libminimuxer.a
+            target/libminimuxer-sim.a
             minimuxer.h
           body: |
             Commit: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
