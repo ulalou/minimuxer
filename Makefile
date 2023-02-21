@@ -15,8 +15,7 @@ build:
 copy: build
 	@echo SIDESTORE_REPO: $(SIDESTORE_REPO)
 
-	cp target/libminimuxer.a "$(SIDESTORE_REPO)/Dependencies/minimuxer.xcframework/ios-arm64"
-	cp minimuxer.h "$(SIDESTORE_REPO)/Dependencies/minimuxer.xcframework/ios-arm64/Headers"
+	cp target/libminimuxer.a "$(SIDESTORE_REPO)/Dependencies/minimuxer"
+	cp target/libminimuxer-sim.a "$(SIDESTORE_REPO)/Dependencies/minimuxer"
+	cp minimuxer.h "$(SIDESTORE_REPO)/Dependencies/minimuxer"
 
-	cp target/libminimuxer-sim.a "$(SIDESTORE_REPO)/Dependencies/minimuxer.xcframework/ios-arm64_x86_64-simulator"
-	cp minimuxer.h "$(SIDESTORE_REPO)/Dependencies/minimuxer.xcframework/ios-arm64_x86_64-simulator/Headers"
