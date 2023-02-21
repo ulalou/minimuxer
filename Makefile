@@ -18,4 +18,5 @@ copy: build
 	cp target/libminimuxer.a "$(SIDESTORE_REPO)/Dependencies/minimuxer"
 	cp target/libminimuxer-sim.a "$(SIDESTORE_REPO)/Dependencies/minimuxer"
 	cp minimuxer.h "$(SIDESTORE_REPO)/Dependencies/minimuxer"
+	touch "$(SIDESTORE_REPO)/Dependencies/.skip-prebuilt-fetch-minimuxer"
 
